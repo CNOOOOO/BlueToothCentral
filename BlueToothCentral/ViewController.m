@@ -133,6 +133,8 @@ typedef NS_ENUM(NSInteger, ManagerState) {//蓝牙状态
 //    }
     //连接外设
     [central connectPeripheral:peripheral options:nil];
+    //检索已经被连接的外设,会返回一个 CBPeripheral的数组
+//    NSArray *peripherals = [self.centralManager retrieveConnectedPeripheralsWithServices:@[[CBUUID UUIDWithString:SERVICE_UUID]]];
 }
 
 //连接成功的回调
@@ -174,6 +176,8 @@ typedef NS_ENUM(NSInteger, ManagerState) {//蓝牙状态
     //遍历服务中的所有特征
     for (CBCharacteristic *characteristic in service.characteristics) {
         NSLog(@"%@",characteristic);
+        //characteristic 访问权限
+        //characteristic.properties
         //从外设开发人员（硬件工程师、或嵌入式开发人员）那拿到不同特征的UUID，不同的特征处理不同的事情
     }
     //由于这里只有一个特征，所以直接取
